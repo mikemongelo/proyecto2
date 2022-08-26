@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Posteo </title>
+
+  <style>
+  .CuerpoBody { 
+     background-color: #eeeeee; 
+   }
+   .exterior {
+     background: linear-gradient(to bottom,rgb(190, 182, 182),rgb(162, 247, 247));
+   }
+   #nombre{
+	 color: #7430f9;
+	 font-size:larger;
+     text-align: left; 
+  }
+.fw-light {
+  color: #0d6efd;
+}
+ .cajaimagen {
+   border: 2px solid #e0e0e0;
+   margin: 10px;
+ } 
+  </style>
+
+</head>
+<body class="CuerpoBody">
+    <header>
+      <nav class="navbar navbar-brand fixed-top navbar-light bg-light">
+          <div class="container" id="navbar">
+            <a class="navbar-brand" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentcolor"
+                   class="bi bi-music-note-list" viewBox="0 0 16 16">
+                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                <path fill-rule="evenodd"
+                 d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+              </svg>
+           <a class="navbar-brand" id="nombre">Vientos de Cambios</a>
+        </nav>
+    </header>
+     
+    <div class="container px-4 py-3">    
+        <div class="row col-md-8 offset-md-2 my-5 justify-content-center shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="col-sm-12 col-md-8 text-center">
+                
+              <h1 class="fw-light titulo"> {{ posteo.titulo }} </h1> 
+              <p>Publicado el : {{posteo.fecha_de_publicacion}}</p>  
+                <div class="mb-3">
+                    <textarea class="form-control" id='posteotexto'  rows="10">
+                        {{ posteo.texto}}
+                    </textarea>
+                </div>
+                {% if posteo.imagen %} 
+                <div class="cajaimagen rounded shadow rounded">
+                    <img src=" {{ posteo.imagen.url}}" width="330" height="240" class="img rounded"/>
+                </div>
+                <p>{{ posteo.imagen.name }} </p>
+                {% endif %} 
+          </div>
+          <a href= "{% url 'inicio' %}"> 
+            <button class="btn btn-success btn-lg">Regresar</button>
+         </a>
+        </div>  
+        <div class="row col-md-8 offset-md-2 my-5 justify-content-center shadow-lg p-3 mb-5 bg-body rounded">          
+            {% if user.is_authenticated %}
+              <form class="form" action="{% url 'ComentarPosteo' posteo.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                   <h4 class="fw-light label text-center" text>Tu comentario</h4>
+                    <textarea class= "form-control text-start" name="comentar" placeholder="Aqui tu comentario..." >
+                   </textarea> 
+                   <div class="d-grid d-md-flex justify-content-md-end">
+                     <button type="submit" class="btn btn-primary ">Enviar</button>
+                   </div> 
+                  
+              </form>
+            {% endif %}
+        </div>
+        <div class="row col-md-8 offset-md-2 my-5 justify-content-center shadow-lg p-3 mb-5 bg-body rounded">            
+            {% if comentarios.count > 0 %}
+              <h4 class="fw-light text-center">Hay {{comentarios.count }} comentarios para esta publicacion</h4>
+           {% else %}
+              <h4 class="fw-light text-center">Aun no hay comentarios para esta publicacion</h4>
+           {% endif %} 
+            <div>
+              {% for comentario in comentarios %}
+              <hr>
+              <p> Realizado  {{ comentario.creador }} el {{ comentario.fechacreacion |date:'d/m/Y' }} </p>
+              
+              <pre style="font-family:inherit; font-size:1em ">
+                {{ comentario.cuerpo}}
+              </pre>
+              {% endfor %}
+            </div>
+        </div>           
+    </div>      
+</body>
+</html>

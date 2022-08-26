@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap5 %}
+
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript %}
+
+    {% bootstrap_messages %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+  <style>
+.cuerpo { 
+ background-color: #eeeeee; 
+}
+.exterior {
+background: linear-gradient(to bottom,rgb(190, 182, 182),rgb(162, 247, 247));
+}
+</style>
+ 
+</head>
+<body class="cuerpo">
+  <div class="container px-3 py-4">
+      <div class= "exterior  col-12 col-md-6 offset-md-3 shadow-lg p-3 mb-5 bg-light rounded">
+        <div class="encabezado text-center"> 
+            <img src="../static/Imagenes/VientosONG.jpg" width="90" height="70" alt="">
+            <h2 class="fw-light text-primary text-center">Registro de usuario</h2>
+        </div>   
+        <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <div class="cajainterna text-center">
+                   <div class="row mb-3 col-form-label">  
+                      <label class="col-sm-4 col-form-label"> Usuario: </label>
+                      <div class="col-sm-8">
+                         {{ form.username }}
+                      </div>  
+                  </div>
+
+                  <div class="row mb-3 col-form-label">
+                    <label class="col-sm-4">Nombre:</label>
+                    <div class="col-sm-8">
+                      {{ form.first_name }}
+                    </div>
+                 </div>
+
+                 <div class="row mb-3">
+                     <label class="col-sm-4 col-form-label">Apellido:</label>
+                     <div class="col-sm-8">
+                       {{ form.last_name }}
+                    </div>
+                 </div>  
+                 <div class="row mb-3">
+                     <label class="col-sm-4 col-form-label">Correo:</label>
+                     <div class="col-sm-8">
+                       {{ form.email }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                     <label class="col-sm-4 col-form-label">Contraseña:</label>
+                     <div class="col-sm-8">
+                       {{ form.password1 }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Confirmar Contraseña</label>
+                    <div class="col-sm-8">
+                      {{ form.password2 }}
+                    </div>  
+                  </div>  
+              </div>
+              <br>
+              <a href="{% url 'inicio' %}"> Ir al Inicio </a>  |
+              <a href="{% url 'login' %}"> Iniciar sesion </a>
+              <div class="d-grid d-md-flex justify-content-md-end">
+                 <input type="submit" value="Ingresar" class="btn btn-success float-right">
+              </div>
+            </form>
+          </div>   
+    </div>
+</body>
+</html>

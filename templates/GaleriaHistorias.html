@@ -1,0 +1,133 @@
+{% extends 'esqueleto.html' %}
+{% load static %}
+{% block titulo %}Vientos de Cambios - Historias{% endblock titulo %}
+
+{% block estilos %}
+<style>
+  .titulogaleria   {
+    color: #0d6efd;
+  }
+   /* 1 columna para smartphones */
+    .breakpoint  {  
+      max-width: 70%;
+      
+   }
+    /* 2 columnas para tablets */
+      @media (min-width: 420px) {
+        .breakpoint  { 
+         max-width: 90%;
+      
+        }
+   }
+    /* 4 columnas para grandes dispositivos*/
+    @media (min-width: 760px) {
+    .breakpoint  {
+       max-width: 100%;
+      
+     }
+  }
+.titulo {
+  text-align: center;
+  color: #ea4843;
+	border: 1 px solid #8164a7(0, 0, 0, .15);
+	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+
+}
+ 
+.cajatexto {
+  width: 300px;
+  height: 180px;
+  border: 1px ;
+  padding: 2px;
+  
+}  
+.card-text {
+  width: 300px;
+  height: 120px;
+  border: 1px ;
+  padding: 2px;
+  overflow: auto;
+
+} 
+.cajafoto {
+  width: 300px;
+  height: 400px;
+  margin: 2px;
+  padding: 1px;
+  text-align: center;
+}
+
+.cajainterna {
+  width: 260px;
+  height: 210px;
+  padding: 1px;
+  text-align: center;
+}
+
+.cajafoto:hover {
+  border: solid 2px #ea4843;
+} 
+.img {
+  width: 100%;
+  max-height: 90%;
+} 
+</style>
+{% endblock estilos %}
+
+  {% block cuerpo %}
+        <ul class="nav  nav-pills">
+            <ul class="nav  nav-pills" id="itmnavbar">
+            <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link" aria-current="page">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'calendario' %}" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="{% url 'Equipo' %}" class="nav-link">Equipo</a></li>
+            <li class="nav-item"><a href="{% url 'Historias' %}" class="nav-link active">Historias</a></li>
+            <li class="nav-item"><a href="{% url 'videos' %}" class="nav-link">Videos</a></li>
+            <li class="nav-item"><a href="{% url 'Imagenes' %}" class="nav-link">Imagenes</a></li>
+            <li class="nav-item"><a href="{% url 'crearcomentario' %}" class="nav-link">Comentarios</a></li> 
+            </ul>
+         </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-3">
+        <div class="col-lg-10 col-md-10 mx-auto rounded">
+          <h1 class="fw-light titulogaleria">Galería de Historias</h1>
+          <h4> <i class="bi bi-book-half"></i> </h4>
+          <p class="lead text-muted">Te compartimos algunas historias
+                                     de alumnos que han pasado o que aun estan integrando la orquesta
+                                     y que merecen ser narradas.Son ellos un gran orgullo para la institucion</p>
+          
+        </div>
+      </div>
+    </section>
+    {% load static %}
+    <div class="album py-5 bg-light shadow p-3 mb-5 rounded">
+      
+      <div class="container breakpoint contenedor">
+        <div class="row ">
+          {% for his in object_list %}  
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="cajafoto card shadow-sm m-1">
+              <h4 class="titulo">{{ his.GetNombre }}</h4>
+                 {% if his.imagen %} 
+                 <div class="cajainterna container">  
+                   <img src="../media/{{ his.imagen }}" class = "img breakpoint shadow bg-body rounded"  alt="Imagen1"  class="img-fluid" id="imagen" />
+                 </div>
+                {% endif %}
+              <div class="cajatexto">
+                <p class="card-text">{{ his.historia }} </p>           
+              </div>
+            </div>
+            
+          </div>
+          {% endfor %} 
+      </div>
+    </div>
+    
+  </div> 
+{% endblock cuerpo %}        
+
+
+

@@ -1,0 +1,40 @@
+{% extends 'esqueleto.html' %}
+{% block titulo %}Vientos de Cambios - Calendario {% endblock titulo %}
+
+{% load static %}
+
+{% block estilos %}
+{% endblock estilos %}  
+  
+     {% block cuerpo %}
+        <ul class="nav  nav-pills">
+          <ul class="nav  nav-pills" id="itmnavbar">
+            <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link" aria-current="page">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'calendario' %}" class="nav-link active">Calendario</a></li>
+            <li class="nav-item"><a href="{% url 'Equipo' %}" class="nav-link">Equipo</a></li>
+            <li class="nav-item"><a href="{% url 'Historias' %}" class="nav-link">Historias</a></li>
+            <li class="nav-item"><a href="{% url 'videos' %}" class="nav-link">Videos</a></li>
+            <li class="nav-item"><a href="{% url 'Imagenes' %}" class="nav-link">Imagenes</a></li>
+            <li class="nav-item"><a href="{% url 'crearcomentario' %}" class="nav-link">Comentarios</a></li> 
+            </ul>
+          </ul>
+   
+         </nav>
+      </header>          
+    
+
+      <div class="container px-4 py-5">
+         <div class=Cajacalendario>  
+              <h2 class="titulocalendario">Calendario:</h2>
+          </div>
+          <div class="iconocalendario text-center" > 
+             <h2>
+              <i class="bi bi-calendar-month-fill" aria-hidden="true"></i>  
+             </h2>
+          </div>
+        </div>                
+      <div class="imagen">
+        <img src="../static/Imagenes/273684585_362095485920863_1719329690073387811_n.jpg" alt=""/>
+      </div>  
+      
+  {% endblock cuerpo %}

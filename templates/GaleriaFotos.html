@@ -1,0 +1,100 @@
+{% extends 'esqueleto.html' %}
+{% load static %}
+{% block titulo %}Vientos de Cambios - Galeria de Imagenes{% endblock titulo %}
+
+{% block estilos %}
+<style>
+/* ------------------------- */
+/* Estilos Generales */
+/* ------------------------- */
+.titulo  {
+    color: #0d6efd;
+}
+
+.FondoFotos {
+    background-color:#f5b0ae ;
+    margin-top: 2px;
+    padding-top: 20PX;
+}
+.breakpoint  {  
+      max-width: 70%;
+      
+   }
+    /* 2 columnas para tablets */
+      @media (min-width: 420px) {
+        .breakpoint  { 
+         max-width: 90%;
+      
+        }
+   }
+    /* 4 columnas para grandes dispositivos*/
+    @media (min-width: 760px) {
+    .breakpoint  {
+       max-width: 100%;
+      
+     }
+  }
+
+    
+.img {
+  width: 95%;
+  max-height: 90%;
+}
+.cajafoto {
+  width: 200px;
+  height: 150px;
+  margin: 2px;
+  padding: 1px;
+  text-align: center;
+}
+.cajafoto:hover {
+  border: solid 1px #cccccc;
+  background-color: whitesmoke;
+
+}
+</style>
+{% endblock estilos %}
+
+{% block cuerpo %}
+        <ul class="nav  nav-pills">
+            <ul class="nav  nav-pills" id="itmnavbar">
+              <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link" aria-current="page">Inicio</a></li>
+              <li class="nav-item"><a href="{% url 'calendario' %}" class="nav-link">Calendario</a></li>
+              <li class="nav-item"><a href="{% url 'Equipo' %}" class="nav-link">Equipo</a></li>
+              <li class="nav-item"><a href="{% url 'Historias' %}" class="nav-link">Historias</a></li>
+              <li class="nav-item"><a href="{% url 'videos' %}" class="nav-link ">Videos</a></li>
+              <li class="nav-item"><a href="{% url 'Imagenes' %}" class="nav-link active">Imagenes</a></li>
+              <li class="nav-item"><a href="{% url 'crearcomentario' %}" class="nav-link">Comentarios</a></li> 
+            </ul>
+          </ul>      
+         </div>
+         </nav>
+       </header>
+
+  <main class="container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto text-center rounded">
+        <h1 class="fw-light titulo">Galería de Imagenes</h1>
+        <h4><i class="bi bi-image"></i></h4> 
+      </div>
+    </div>
+    
+    <div class="container FondoFotos justify-content-center col-md-12 shadow p-3 mb-5 rounded">
+      <div class="row galeria px-2 py-2 justify-content-center">
+       {% for Foto in object_list %}  
+          {% if Foto.imagen %} 
+              <div class="cajafoto col-sm-12 col-md-4 col-lg-3">
+                <a href="{% url 'VerFoto' Foto.id %}">
+                  <img src= "../media/{{ Foto.imagen }}" alt="" class = "img breakpoint shadow bg-body rounded" class="img-fluid" />
+                </a>                        
+            </div>
+            
+            {% endif %}  
+        {% endfor %} 
+
+    </div>
+  </div>  
+  <!-- Button trigger modal -->
+
+</main>
+ {% endblock cuerpo %}

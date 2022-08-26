@@ -1,0 +1,48 @@
+{% extends 'esqueleto.html' %}
+{% load static %}
+{% block titulo %}Vientos de Cambios - Nuevo  Posteo{% endblock titulo %}
+
+  <!-- Bootstrap core CSS -->
+    {% load bootstrap5 %}
+
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript %}
+
+    {% bootstrap_messages %}
+  
+    {% block estilos %}
+    
+    {% endblock estilos %}
+    
+    {% block cuerpo %}
+        <ul class="nav  nav-pills">
+            <ul class="nav  nav-pills" id="itmnavbar">
+              <li class="nav-item"><a href="{% url 'inicio' %}" class="nav-link" aria-current="page">Inicio</a></li>
+              <li class="nav-item"><a href="{% url 'calendario' %}" class="nav-link">Calendario</a></li>
+              <li class="nav-item"><a href="{% url 'Equipo' %}" class="nav-link">Equipo</a></li>
+              <li class="nav-item"><a href="{% url 'Historias' %}" class="nav-link">Historias</a></li>
+              <li class="nav-item"><a href="{% url 'videos' %}" class="nav-link ">Videos</a></li>
+              <li class="nav-item"><a href="{% url 'Imagenes' %}" class="nav-link">Imagenes</a></li>
+              <li class="nav-item"><a href="{% url 'crearcomentario' %}" class="nav-link">Comentarios</a></li> 
+            </ul>
+          </ul>      
+         </div>
+         </nav>
+       </header>
+     
+        <div class="container px-4 py-2 ">    
+          <div class="row my-2 justify-content-center shadow-lg p-3 mb-5 bg-body rounded">
+              <div class="col-md-10">
+                  <form method="post" class="form" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {% bootstrap_form form %}
+                      {% buttons %}
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                      {% endbuttons %}
+                  </form>
+              </div>
+          </div>
+      </div>      
+    
+    {% endblock cuerpo %}

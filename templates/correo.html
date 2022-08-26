@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de contacto</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../static/css/correo.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <header id="cabeza" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+
+      <nav class="navbar navbar-brand fixed-top navbar-light bg-light">
+        <div class="container" id="navbar">
+          <a class="navbar-brand" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentcolor"
+              class="bi bi-music-note-list" viewBox="0 0 16 16">
+              <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+              <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+              <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+              <path fill-rule="evenodd"
+                d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+            </svg>
+            <a class="navbar-brand" href="#" id="nombre">Vientos de Cambios</a>
+
+          </a>
+          <ul class="nav  nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Inicio</a></li>
+            <li class="nav-item"><a href="#boxFeatures" class="nav-link">Acerca</a></li>
+            <li class="nav-item"><a href="#contacto" class="nav-link">Contactos</a></li>
+            <li class="nav-item"><a href="#noticias" class="nav-link">Blogs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Alumnos</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+      <div class="jumbotron">
+        <form class="form-signin">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Nombre" placeholder="Nombre">
+            <label for="floatingInput">Nombre</label>
+          </div>
+          
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Apellido" placeholder="Apellido">
+            <label for="floatingInput">Apellido</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Correo electrónico</label>
+            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+          </div>
+          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Verificado</label>
+          </div>
+          <div class="form-floating">
+            <textarea class="form-control" id="message" placeholder="ingrese su mensaje aqui..." style="height: 12rem"
+              data-sb-validations="required"></textarea>
+            <label for="message">Mensaje</label>
+            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-danger">Enviar</button>
+        </form>
+      
+    </div>
+  </div>
+</body>
+
+</html>

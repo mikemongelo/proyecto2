@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="es">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Vientos de Cambios - Inicio</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/inicio.css" rel="stylesheet">
+  <style>
+    #show,
+    #hide {
+      display: none;
+    }
+
+    /* div#content {
+      display: none;
+      padding: 10px;
+
+    } */
+
+    input#show:checked~div#content {
+      display: block;
+    }
+
+    input#hide:checked~div#content {
+      display: none;
+    }
+    #abajo,#arriba {
+      font-size: x-large;
+
+    }
+  </style>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+    </symbol>
+    <symbol id="toggles2" viewBox="0 0 16 16">
+      <path d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z" />
+      <path
+        d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm.535-10a3.975 3.975 0 0 1-.409-1H4a1 1 0 0 1 0-2h2.126c.091-.355.23-.69.41-1H4a2 2 0 1 0 0 4h2.535z" />
+      <path d="M14 4a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+    </symbol>
+    <symbol id="tools" viewBox="0 0 16 16">
+      <path
+        d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z" />
+    </symbol>
+    <symbol id="facebook" viewBox="0 0 16 16">
+      <path
+        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+    </symbol>
+    <symbol id="instagram" viewBox="0 0 16 16">
+      <path
+        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+    </symbol>
+    <symbol id="twitter" viewBox="0 0 16 16">
+      <path
+        d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+    </symbol>
+    <symbol id="film" viewBox="0 0 16 16">
+      <path
+        d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
+    </symbol>
+
+    <symbol id="joystick" viewBox="0 0 16 16">
+      <path
+        d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2z" />
+      <path
+        d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23z" />
+    </symbol>
+
+    <symbol id="music-note-beamed" viewBox="0 0 16 16">
+      <path
+        d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z" />
+      <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
+      <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
+    </symbol>
+
+    <symbol id="files" viewBox="0 0 16 16">
+      <path
+        d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+    </symbol>
+
+    <symbol id="image-fill" viewBox="0 0 16 16">
+      <path
+        d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
+    </symbol>
+
+    <symbol id="trash" viewBox="0 0 16 16">
+      <path
+        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+      <path fill-rule="evenodd"
+        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+    </symbol>
+  </svg>
+  <svg id="CheckPerson" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+    class="bi bi-person-check" viewBox="0 0 16 16">
+    <path
+      d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+    <path fill-rule="evenodd"
+      d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+  </svg>
+  <svg id='Ejectar' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eject"
+    viewBox="0 0 16 16">
+    <path
+      d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H1.656C.78 9.5.326 8.455.926 7.816L7.27 1.047zM14.346 8.5 8 1.731 1.654 8.5h12.692zM.5 11.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-1zm14 0h-13v1h13v-1z" />
+  </svg>
+  <svg id="Iniciar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd"
+      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+    <path fill-rule="evenodd"
+      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+  </svg>
+  <svg id="Registrar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+    class="bi bi-file-plus" viewBox="0 0 16 16">
+    <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
+    <path
+      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left"
+    viewBox="0 0 16 16">
+    <path fill-rule="evenodd"
+      d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+    <path fill-rule="evenodd"
+      d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill"
+    viewBox="0 0 16 16">
+    <path
+      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+  </svg>
+  <svg id="Corchea" xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentcolor"
+    class="bi bi-music-note-list" viewBox="0 0 16 16">
+    <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+    <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+    <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+    <path fill-rule="evenodd"
+      d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+  </svg>
+</head>
+
+<body>
+
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"></a>
+    <nav class="navbar navbar-brand fixed-top navbar-light bg-light">
+      <svg class="bi" width="30" height="30">
+        <use xlink:href="#Corchea" />
+      </svg>
+      <div class="container" id="navbar">
+
+        <a class="navbar-brand" href="#" id="nombre">Vientos de Cambios</a>
+
+        <ul class="nav  nav-pills" id="itmnavbar">
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Inicio</a></li>
+          <li class="nav-item"><a href="#noticias" class="nav-link">Noticias</a></li>
+          <li class="nav-item"><a href="{% url 'calendario' %}" class="nav-link">Calendario</a></li>
+          <li class="nav-item"><a href="{% url 'Equipo' %}" class="nav-link">Equipo</a></li>
+          <li class="nav-item"><a href="{% url 'Historias' %}" class="nav-link">Historias</a></li>
+          <li class="nav-item"><a href="{% url 'videos' %}" class="nav-link">Videos</a></li>
+          <li class="nav-item"><a href="{% url 'Imagenes' %}" class="nav-link">Imagenes</a></li>
+          <li class="nav-item"><a href="{% url 'crearcomentario' %}" class="nav-link">Comentarios</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
+              aria-expanded="false">Usuario
+              {% if user.is_authenticated %}
+              <span class="conectado">
+                <svg class="bi" style="color:red" width="18" height="18">
+                  <use xlink:href="#CheckPerson" />
+                </svg>
+              </span>
+              {% endif %}
+
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-macos mx-2 dropdown-menu-end shadow" style="width: 220px;">
+              {% if user.is_authenticated %}
+              <li>
+                <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                  <svg class="bi" style="color:red" width="18" height="18">
+                    <use xlink:href="#CheckPerson" />
+                  </svg>
+                  {{ user.username }}
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex gap-2 align-items-center" href="{% url 'logout' %}">
+                  <svg class="bi" width="16" height="16">
+                    <use xlink:href="#Ejectar" />
+                  </svg>
+                  Cerrar Sesion
+                </a>
+              </li>
+              {% else %}
+              <li>
+                <a class="dropdown-item d-flex gap-2 align-items-center" href="{% url 'login' %}">
+                  <svg class="bi" width="16" height="16">
+                    <use xlink:href="#Iniciar" />
+                  </svg>
+                  Iniciar Sesion
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex gap-2 align-items-center" href="{% url 'registro'%}">
+                  <svg class="bi" width="16" height="16">
+                    <use xlink:href="#Registrar" />
+                  </svg>
+                  Registrarse
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      
+      <!-- <label for="show">
+        <span class="text-primary" id="abajo"><i class="bi bi-menu-up" width="1em" height="1em"></i> 
+        </span>
+      </label>
+      <input type="radio" id="show" name="group">
+
+      <label for="hide">
+        <span class= "text-primary" id="arriba"><i class="bi bi-menu-down" width="1em" height="1em"></i>
+        </span>
+        
+      </label>
+      <input type="radio" id="hide" name="group"> -->
+    
+
+
+
+      <div class="container px-4 py-5" id="content">
+        <div class="imagen">
+          <img src="../static/Imagenes/VientosONG.jpg" alt="">
+        </div>
+
+        <h2 class="pb-2" id="titulo_presentacion"><b> NUESTRA MISIÓN: </b> </h2>
+        <p class="descripcion">Promover el intercambio cultural y el desarrollo humano
+          a traves de la educación,
+          la palabra y la música, favoreciendo la inclusión de niños, jóvenes y adultos
+          en situación de riesgo. Utilizar el arte y el lenguaje como pilares fundamentales.
+          Promover y profundizar el estudio de la música como una alternativa creadora,
+          de disciplina personal y proyecto de vida, que brinde posibilidades a
+          los jóvenes ayudandolos a profesionalizar el arte adoptándolo como medio de vida.
+          Impulsar la creación de orquestas infantiles y juveniles entendiendo estos espacios
+          como una herramienta de trasnformación social.</p>
+
+
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" id="boxFeatures">
+          <div class="feature col" id="tarjeta">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                <path
+                  d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707L7.293 1.5Z" />
+                <path
+                  d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9.293Zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018Z" />
+              </svg>
+            </div>
+            <h2>Donde estamos:</h2>
+            <p>Estamos en la Ciudad de Pcia Roque Sáenz Peña, Chaco.
+              Trabajamos en diferentes escuelas con las cuales tenemos
+              convenios para el uso del espacio físico y dictado de clases.</p>
+
+          </div>
+          <div class="cajamedio">
+            <div class="feature col2" id="tarjeta">
+              <div class="feature-icon bg-primary bg-gradient">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                  class="bi bi-people" viewBox="0 0 16 16">
+                  <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+                </svg>
+
+              </div>
+              <div class="titulotarjeta">
+                <h2>Quienes somos:</h2>
+                <h6>Orquesta Escuela Infantil / juvenil.</h6>
+              </div>
+              <p>
+                En sus inicios comienza con 9 alumnos. Actualmente cuenta, la escuela de mùsica,
+                con 82 alumnos, y la orquesta està compuesta por 50 integrantes.Somos un equipo de docentes y artistas
+                encabezados por Nilce Bravo, Ricardo Velazquez y Gonzalo Cejas.
+              </p>
+            </div>
+          </div>
+          <div class="feature col" id="tarjeta">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                class="bi bi-currency-exchange" viewBox="0 0 16 16">
+                <path
+                  d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z" />
+              </svg>
+            </div>
+            <h2>Nos financiamos:</h2>
+            <p>Somos una organzación sin fines de lucro, no recibimos ayuda estatal de ningun tipo. Nos financiamos con
+              los aportes
+              solidarios de quienes voluntariamente colaboran con la tarea.
+            </p>
+          </div>
+        </div>
+
+        <div class="divisor2"></div>
+
+        <div class="cajaColab">
+          <h2 class="pb-2 border-bottom" Id="tituloColab"> <b>COLABORACION:</b></h2>
+          <p class="descripcion">Podes colaborar con la orquesta con el monto que decidas hacerlo.
+            Te dejamos un link. Desde ya muchas gracias.
+            <br>
+            <a
+              href="https://donaronline.org/fundacion-vientos-de-cambio/aporte-solidario-orquesta-escuela-vientos-de-cambio">
+              https://donaronline.org/fundacion-vientos-de-cambio/aporte-solidario-orquesta-escuela-vientos-de-cambio
+            </a>
+          </p>
+        </div>
+
+        <div class="divisor2"></div>
+
+        <div>
+          <h2 class="pb-2 border-bottom" id="contacto"><b>CONTACTOS: </b></h2>
+          <p class="descripcion">Podes conocer más sobre nuestra actividad en nuestra página de
+            <a href="https://www.facebook.com/orquestavientosdecambio" class="btn btn-danger btn-lg">
+              Facebook
+            </a>
+            .Te invitamos a que visites nuestro
+            <a href="https://www.youtube.com/channel/UCi4FuxJHYOk1eOgNd3vpH_g" class="btn btn-warning btn-lg">Canal de
+              Youtube
+            </a>
+          </p>
+        </div>
+
+        <div class="divisor2"></div>
+      </div>
+      <div class="noticias" id="noticias">
+        <h1 class="pb-2 border-bottom" id="titulonoticias"><b>Noticias</b></h1>
+        <h2 class="envaseicono text-center">
+          <i class="bi bi-file-text-fill" style="color:green" aria-hidden="true"></i>
+             
+          {% if user.is_authenticated %}
+            <span>
+              <a href="{% url 'AgregarPosteo' %}">
+              <button type="button" class="btn btn-success">Agregar Posteo
+              </button>
+            </a>
+          </span>
+          {% endif %}
+        </h2>
+      </div>
+      {% load static %}
+      <div class="container col-sm-12 col-md-10" id="blog">
+        <div class="row">
+
+          {% for posteo in object_list %}
+          <div class="col-sm-12 col-md-11">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="true"
+                    aria-controls="collapse{{ forloop.counter }}">
+                    <div class="formatotexto text-center ">
+                      <strong> {{ posteo.titulo}} &nbsp; </strong> {{ posteo.fecha_de_publicacion|date:'d/m/Y' }}
+                    </div>
+                  </button>
+
+                </h2>
+                <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <textarea class="col-sm-12 col-md-8"  id='posteotexto'  rows="5">
+                          {{ posteo.texto}}
+                      </textarea>
+                    </div>
+                    <!-- {{ posteo.texto }} -->
+                    <div class="box-imagen">
+                      <img src="../media/{{posteo.imagen}}" class="img-fluid d-block mx-auto rounded" width="150"
+                        height="100">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-1">
+            {% if user.is_authenticated %}
+            <a href="{% url 'VerPosteo' posteo.id %}">
+              <span>
+                <button type="button" class="btn btn-primary">Ver</button>
+              </span>
+            </a>
+            {% endif %}
+
+          </div>
+
+          <div class="divisor2"></div>
+
+          {% endfor %}
+        </div>
+      </div>
+      <div class="pagination justify-content-center pagination-lg">
+        {% if page_obj.has_previous %}
+        <!-- <a  class="page-link" href= "{% url 'inicio' %}?page = {{page_obj.previous_page_number}}">
+                Ir a Pagina {{page_obj.previous_page_number}} 
+              </a> -->
+        <a class="page-link " href="?page=1">1</a>
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+          {{ page_obj.previous_page_number}} </a>
+        {% endif %}
+        <span class="current">
+          Pagina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        <!-- Pagina actual  {{ page_obj.number}}  -->
+
+        {% if page_obj.has_next %}
+        <a class="page-link" href="{% url 'inicio' %}?page={{page_obj.next_page_number}}">
+          {{page_obj.next_page_number}}
+        </a>
+        {% endif %}
+      <!---------------------------------------------------------------------->
+        
+      <!------------------------------------------------------------------------>
+    
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="text-center text-lg-start">
+
+      <!-- Section: Links  -->
+      <section class="seccion" style="background-color: rgba(0, 0, 0, 0.05)">
+        <div class="container text-center text-md-start mt-5">
+          <div class=" row justify-content-between">
+            <div class="col-md-3 col-sm-12 col-xs-3">
+              <h4 class="text-uppercase fw-bold mb-4">Ubicacion</h4>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.542815652397!2d-60.43889604986135!3d-26.790839583097753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94412d18aa375ebd%3A0x3b6df931b80713c2!2sLas%20Heras%20%26%209%20de%20Julio%2C%20S%C3%A1enz%20Pe%C3%B1a%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1660109773869!5m2!1ses-419!2sar"
+                width="400" height="300" style="border:1px;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xls-3 text-end" id="caja_derecha">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1660147706871!6m8!1m7!1sjsFjvAiRm8Xh5tq09uGtVw!2m2!1d-26.79107930588471!2d-60.43599579294346!3f176.47!4f-0.9399999999999977!5f0.4000000000000002"
+                width="400" height="300" style="border:1;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xls-3 text-left" id="caja_derecha">
+              <h4 class="text-uppercase fw-bold mb-4">Contactos</h4>
+              <p><i class="bi bi-geo-alt"></i> P Roque Saenz Peña - Chaco- Argentina
+              </p>
+              <hr>
+              <p><i class="bi bi-envelope-fill"></i> orquestaescuelavientosdecambio@gmail.com
+              </p>
+              <hr>
+              <p> <i class="bi bi-telephone"></i> 0364 457-4664</p>
+              <hr>
+              <p><i class="bi bi-facebook"></i> facebook.com/orquestavientosdecambio</p>
+              <hr>
+              <p></p><i class="bi bi-instagram"></i> @fvientosdecambio </p>
+              <hr>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2022 Informatorio
+        <h4>
+          <i class="bi bi-8-circle-fill"></i>
+        </h4>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item list-group-item-info">Vanina Gutierrez: gvaninanoemi@gmail.com</li>
+          <li class="list-group-item list-group-item-info">Miguel Mongelo: mikemongelo@gmail.com</li>
+          <li class="list-group-item list-group-item-info">Omar Solís: rafael_qaz@hotmail.com</li>
+          <li class="list-group-item list-group-item-info">Rubén Sánchez: arubensanchezg@gmail.com</li>
+        </ul>
+      </div>
+
+    </footer>
+    <!-- Footer -->
+
+
+
+  </main>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
