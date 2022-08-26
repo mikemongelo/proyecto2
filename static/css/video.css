@@ -1,0 +1,100 @@
+#navbar {
+	padding: 0px;
+}
+#itmnavbar {
+	font-size: 16px;
+}
+#nombre{
+	color: #7430f9;
+	font-size: larger;
+}
+.delimitador{
+    width:560px;    /* Ancho máximo */
+    margin:auto;    /* Centramos el vídeo */
+}
+
+.titulovideos{
+    text-align: center;
+    color: #8c0cc7;
+	border: 1px solid #8164a7(0, 0, 0, .15);
+	/* box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15); */
+}
+#barravideo {
+    text-align: center;
+	border: 1px solid #8164a7(0, 0, 0, .15);
+	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+#iconoIZ  {
+    text-align: left;
+}
+
+#iconoDE  {
+    text-align: right;
+}
+
+.comentario_video {
+    padding: 2px;
+    border: 1px solid grey;
+}
+.separador{
+    height: 2rem;	
+}
+#caja_derecha {
+	border-left: solid 3px rgb(245, 84, 106);
+}
+.youtube-player {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: grey;
+    margin: 1px;
+  }
+
+  .youtube-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: transparent;
+  }
+
+  .youtube-player img {
+    object-fit: cover;
+    display: block;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    height: auto;
+    cursor: pointer;
+    -webkit-transition: 0.4s all;
+    -moz-transition: 0.4s all;
+    transition: 0.4s all;
+  }
+
+
+  .youtube-player .play {
+    height: 72px;
+    width: 72px;
+    left: 50%;
+    top: 50%;
+    margin-left: -36px;
+    margin-top: -36px;
+    position: absolute;
+    background: url('//i.imgur.com/TxzC70f.png') no-repeat;
+    cursor: pointer;
+  }
+  .titulodelvideo {
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+  }
